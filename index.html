@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>User Authentication</title>
+    <style>
+    
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        .form-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f2f2f2;
+            background: url('login.jpeg') center/cover no-repeat;
+        }
+
+
+        .form {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: #fff;
+            
+        }
+
+        .toggle-form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .toggle-form a {
+            color: #333;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        .input-field {
+            width: 100%;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .input-field input {
+              width: calc(100% - 25px); /* Adjust the width to leave space for the icon */
+              outline: none;
+              border: none;
+              border-bottom: 2px solid rgb(182, 180, 180);
+              font-size: 15px;
+              padding-left: 25px; /* Ensure text does not overlap with the icon */
+              padding-bottom: 10px; /* Add padding to the bottom of the input field */
+        }
+
+        .input-field i {
+              position: absolute;
+              padding-bottom: 25px;
+              left: 5px; /* Adjust the left position as needed */
+              top: 70%; /* Adjust the top position to add space from the bottom */
+              transform: translateY(-50%);
+        }
+        .button{
+            color:white;
+            background-color: #7227D5;
+            text-decoration: none;
+            font-size: 18px;
+            height: 40px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+        }
+
+
+
+    </style>
+</head>
+</body>
+    <div class="container">
+        <div class="form-container" id="formContainer">
+            <!-- Registration Form -->
+            <div class="form" id="registerForm">
+                <h2>Sign Up</h2>
+
+      <div class="input-field">
+          <i class="fa fa-envelope"></i><input type="text" placeholder="Enter your email">
+      </div>
+
+      <div class="input-field">
+          <i class="fa fa-phone-square" aria-hidden="true"></i><input type="tel" placeholder="123-45-678" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+      </div>
+
+      <div class="input-field">
+        <i class="fa fa-lock"></i><input type="password" placeholder="Enter your password">
+     </div>
+
+      <div class="input-field">
+        <i class="fa fa-lock"></i><input type="password" placeholder="Repeat your password">
+      </div>
+
+        <button class="button">Signup</button>
+                <div class="toggle-form">
+                    <a onclick="toggleForm('loginForm')">Already have an account? Log in</a>
+                </div>
+            </div>
+
+            <!-- Login Form -->
+            <div class="form hidden" id="loginForm">
+                <h2>Login</h2>
+                <div class="input-field">
+          <i class="fa fa-envelope"></i><input type="text" placeholder="Enter your email">
+                </div>
+
+                <div class="input-field">
+        <i class="fa fa-lock"></i><input type="password" placeholder="Enter your password">
+                </div>
+
+                 <button class="button">Login</button>
+                <div class="toggle-form">
+                    <a onclick="toggleForm('registerForm')">Don't have an account? Sign up</a>
+                </div>
+
+                <div class="toggle-form">
+                    <a onclick="toggleForm('forgotPasswordForm')">Forgot password?</a>
+                </div>
+            </div>
+
+            <!-- Forgot Password Form -->
+            <div class="form hidden" id="forgotPasswordForm">
+                <h2>Forgot Password</h2>
+
+                <div class="input-field">
+          <i class="fa fa-envelope"></i><input type="text" placeholder="Enter your email">
+               </div>
+
+
+
+                <div class="toggle-form">
+
+                    <a onclick="toggleForm('loginForm')">Remembered your password? Log in</a>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="image-container">
+            
+        </div>
+    </div>
+
+    <script>
+        function toggleForm(formId) {
+            const forms = ['registerForm', 'loginForm', 'forgotPasswordForm'];
+            forms.forEach(form => {
+                const element = document.getElementById(form);
+                if (form === formId) {
+                    element.classList.remove('hidden');
+                } else {
+                    element.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
